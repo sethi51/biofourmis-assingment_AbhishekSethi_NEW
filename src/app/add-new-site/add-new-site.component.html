@@ -1,0 +1,37 @@
+<div (click)="handleOutsideEvent()" class="backdrop" *ngIf="showPopUp"></div>
+<div #addNewSiteContainer class="add-new-site-container" *ngIf="showPopUp">
+    <h3 class="heading">Add New Site</h3>
+    <form (ngSubmit)="!newDomainForm.invalid && saveDomain()" #newDomainForm="ngForm">
+        <fieldset style="margin-top: 5px;" class="form-item">
+            <label class="form-label">Domain Name</label>
+            <input class="form-input" placeholder="Enter Domain Name" name="domainName" #domainName="ngModel"
+                [ngClass]="{'invalid':(domainName.touched && domainName.invalid)}" [(ngModel)]="payload.domain"
+                required>
+        </fieldset>
+        <fieldset style="margin-top: 5px;" class="form-item">
+            <label class="form-label">Storage</label>
+            <input class="form-input" placeholder="Enter Storage" name="storage" #storage="ngModel"
+                [ngClass]="{'invalid':(storage.touched && storage.invalid)}" [(ngModel)]="payload.storage" required>
+        </fieldset>
+        <fieldset style="margin-top: 5px;" class="form-item">
+            <label class="form-label">Used Storage</label>
+            <input class="form-input" placeholder="Enter Used Storage" name="usedStorage" #usedStorage="ngModel"
+                [ngClass]="{'invalid':(usedStorage.touched && usedStorage.invalid)}" [(ngModel)]="payload.usedStorage"
+                required>
+        </fieldset>
+        <fieldset style="margin-top: 5px;" class="form-item">
+            <label class="form-label">Monthly Visitors</label>
+            <input class="form-input" placeholder="Enter Monthly Visitors" name="monthlyVisitors"
+                [ngClass]="{'invalid':(monthlyVisitors.touched && monthlyVisitors.invalid)}" #monthlyVisitors="ngModel"
+                [(ngModel)]="payload.monthlyVisitor" required>
+        </fieldset>
+        <fieldset style="margin-top: 5px;" class="form-item">
+            <label class="form-label">Status</label>
+            <input class="form-input" placeholder="Enter Status" name="status" [(ngModel)]="payload.status"
+                [ngClass]="{'invalid':(status.touched && status.invalid)}" #status="ngModel" required>
+        </fieldset>
+        <div class="button-div">
+            <button type="submit" class="btn-submit" [disabled]="newDomainForm.invalid">Submit</button>
+        </div>
+    </form>
+</div>

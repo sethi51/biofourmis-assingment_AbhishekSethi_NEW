@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+.backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 400;
+    background-color: rgb(0, 0, 0,0.75);
+    &.full-view{
+        z-index: 1500 !important;
+    }
+    &.mid-view{
+        z-index: 1499 !important;
+    }
+}

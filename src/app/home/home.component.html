@@ -1,0 +1,64 @@
+<div class="home-container">
+    <div class="header">
+        <span class="heading">Site Details</span>
+        <span class="add-new-site">
+            <button (click)="addNewSite()" class="btn-add-new-site">Add New Site</button>
+        </span>
+    </div>
+    <div class="search-bar">
+        <input #filterInput type="text" class="search-box" results="0" (input)="globalFilterHandler(filterInput.value)"
+            placeholder="Search Domain">
+        <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+    </div>
+    <div class="header-row">
+        <div *ngFor="let header of headers" class="item">
+            {{header.header}}
+        </div>
+    </div>
+    <div class="data-row" *ngFor="let data of domains" (click)='expandCollapse(data)'>
+        <div *ngFor="let header of headers" class="item" [ngSwitch]="header.field">
+            <ng-container *ngSwitchCase="'storage'">
+                <div class="w3-border" style="margin: 7px 10px 0px 0px; border-radius: 5px;">
+                    <div class="w3-green" [ngStyle]="setBar(data)" style="height:24px;border-radius: 5px;"></div>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'status'">
+                <span [ngClass]="{'active':data.status=='Active','inactive':data.status=='Inactive'}">
+                    {{data[header.field]}}
+                </span>
+            </ng-container>
+            <ng-container *ngSwitchCase="'domainTag'">
+                {{data.subDomainLen}} / 10
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+                {{data[header.field]}}
+            </ng-container>
+        </div>
+        <div class="sub-domain-items" *ngIf="data.isOpen == true">
+            <div class="data-row" *ngFor="let subDomain of data.subDomain">
+                <div *ngFor="let header of headers" class="item" [ngSwitch]="header.field">
+                    <ng-container *ngSwitchCase="'storage'">
+                        <div class="w3-border" style="margin: 7px 10px 0px 0px; border-radius: 5px;">
+                            <div class="w3-green" [ngStyle]="setBar(subDomain)" style="height:24px;border-radius: 5px;">
+                            </div>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'status'">
+                        <span [ngClass]="{'active':data.status=='Active','inactive':data.status=='Inactive'}">
+                            {{subDomain[header.field]}}
+                        </span>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'domainTag'">
+                        <span [ngClass]="{'primary':subDomain.domainTag=='Primary','stagging':subDomain.domainTag=='Stagging'
+                        ,'addOn':subDomain.domainTag=='Add-On'}">
+                            {{subDomain[header.field]}}
+                        </span>
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>
+                        {{subDomain[header.field]}}
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

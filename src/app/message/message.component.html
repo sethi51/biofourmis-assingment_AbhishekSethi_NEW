@@ -1,0 +1,12 @@
+<div class="message-container" *ngIf="showMessage">
+    <div class="message-container__header">
+        <div class="message-container__header--title">
+            <!-- <div class="icon"><i class="pi pi-check-circle"></i></div> -->
+            <div class="title">{{message.messageTitle}}</div>
+        </div>
+        <span class="close" (click)="close()"><img width="13px" height="13px" src="assets/images/closeIcon.png"></span>
+    </div>
+    <div class="message-container__body">
+        {{message.messageBody}}
+    </div>
+</div>

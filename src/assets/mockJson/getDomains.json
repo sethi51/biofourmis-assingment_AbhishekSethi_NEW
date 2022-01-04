@@ -1,0 +1,51 @@
+[
+    {
+        "id": "1",
+        "domain": "xyz.com",
+        "storage": "14GB",
+        "usedStorage": "10GB",
+        "monthlyVisitor": "10",
+        "domainTag": "Primary",
+        "status": "Active",
+        "subDomain": [
+            {
+                "id": "12",
+                "domain": "xyz1.com",
+                "storage": "5GB",
+                "usedStorage": "1GB",
+                "monthlyVisitor": "7",
+                "domainTag": "Primary",
+                "status": "Active"
+            },
+            {
+                "id": "11",
+                "domain": "xyz2.com",
+                "storage": "9GB",
+                "usedStorage": "9GB",
+                "monthlyVisitor": "3",
+                "domainTag": "Stagging",
+                "status": "Active"
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "domain": "abc.com",
+        "storage": "19GB",
+        "usedStorage": "5GB",
+        "monthlyVisitor": "100",
+        "domainTag": "Primary",
+        "status": "Active",
+        "subDomain": []
+    },
+    {
+        "id": "4",
+        "domain": "lmn.com",
+        "storage": "30GB",
+        "usedStorage": "28GB",
+        "monthlyVisitor": "100",
+        "domainTag": "Primary",
+        "status": "Inactive",
+        "subDomain": []
+    }
+]
